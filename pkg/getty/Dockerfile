@@ -10,8 +10,13 @@ RUN apk add --no-cache --initdb -p /out \
     tini \
     util-linux \
     wireguard-tools \
+    dhcpcd \
     && true
 RUN mv /out/etc/apk/repositories.upstream /out/etc/apk/repositories
+
+# unpack rpi3 firmware and modules into resultant image / (via /out)
+ADD --chown=root:root firmware.tar.gz /out
+ADD --chown=root:root modules.tar.gz /out
 
 #
 # We require a version of `setsid(1)` which supports the `-w`
