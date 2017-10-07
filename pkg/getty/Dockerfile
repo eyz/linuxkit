@@ -15,8 +15,8 @@ RUN apk add --no-cache --initdb -p /out \
 RUN mv /out/etc/apk/repositories.upstream /out/etc/apk/repositories
 
 # unpack rpi3 firmware and modules into resultant image / (via /out)
-ADD --chown=root:root firmware.tar.gz /out
-ADD --chown=root:root modules.tar.gz /out
+ADD --chown=root:root rpi3-lib_firmware.tar.gz /out
+ADD --chown=root:root lib_modules-4.9.13-bee42-v8.tar.gz /out
 
 #
 # We require a version of `setsid(1)` which supports the `-w`
