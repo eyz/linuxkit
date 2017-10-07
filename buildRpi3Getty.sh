@@ -14,7 +14,7 @@ docker build --pull -t linuxkit-rpi3/modprobe:0.1 .
 
 cd ../../examples
 
-for IMAGE in $(grep -Eo 'linuxkit/.+$' gettyInInitWithFirmwareModulesAndDhcpcd.yml); do
+for IMAGE in $(grep -Eo 'linuxkit/.+$' getty*.yml | cut -d ':' -f 2- | sort -u); do
   docker pull "${IMAGE}"
 done
 
